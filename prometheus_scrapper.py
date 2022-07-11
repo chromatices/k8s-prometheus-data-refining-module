@@ -2,6 +2,8 @@ import os
 import re
 import argparse
 from tqdm import tqdm
+from utils.custom_dir import custom_dir
+
 from prometheus_api_client.utils import parse_datetime, parse_timedelta
 from prometheus_api_client import PrometheusConnect, MetricSnapshotDataFrame, MetricRangeDataFrame, PrometheusApiClientException
 
@@ -21,8 +23,7 @@ def main(url:str, start_time:str, end_time:str, chunk_size:str, storage_path:str
     chunk_size = parse_timedelta(end_time, chunk_size)
     storage_path = storage_path
 
-    if not os.path.isdir(storage_path):
-        os.mkdir(storage_path)
+    custom_dir(storage_path)
     f =  open(storage_path +"/error_variable.txt",'w')
 
     # import avaliable metric's name

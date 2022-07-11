@@ -2,7 +2,7 @@ import os
 import argparse
 import pandas as pd
 from tqdm import tqdm
-
+from utils.custom_dir import custom_dir
 
 parser = argparse.ArgumentParser(description='Process to set parameters.')
 parser.add_argument('--storage_path', type=str,default='./prometheus_cpu_memory/')
@@ -10,9 +10,7 @@ parser.add_argument('--chunk_size', type=str, default='D', help="set chunk size 
 parser.add_argument('--method', type=str,default='mean', help= "choose groupby method ex) mean, sum, median")
 args = parser.parse_args()
 
-def custom_dir(storage_path):
-    if not os.path.isdir(storage_path):
-        os.mkdir(storage_path)
+
 
 def preprocessing_each_pod(dir:str, chunk_size:str,method:str):
     

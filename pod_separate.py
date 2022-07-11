@@ -1,18 +1,14 @@
-import os
 import argparse
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+from utils.custom_dir import custom_dir
 
 parser = argparse.ArgumentParser(description='Process to set parameters.')
 parser.add_argument('--filename',type=str,default=None)
 parser.add_argument('--target_dir',type=str,default=None)
 parser.add_argument('--save_dir',type=str,default=None)
 args = parser.parse_args()
-
-def custom_dir(storage_path):
-    if not os.path.isdir(storage_path):
-        os.mkdir(storage_path)
 
 def pod_separate(csv_file:str, dir:str, save_dir:str):
     custom_dir(save_dir)
