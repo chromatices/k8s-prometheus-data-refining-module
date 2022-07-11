@@ -3,11 +3,11 @@
 
 This repository is a module for prometheus data scraping and preprocessing in k8s environments; the configuration consists of three files, each of which is summarized as follows:
 
-**prometheus_scrapper.py**: Gets Prometheus metric data. Enter the Prometheus url in service, enter the starting point, end point, and collection interval of the collection period to import all the metric data provided by Prometheus.
+**prometheus_scrapper.py**: Gets Prometheus metric data. Enter the Prometheus URL (ex: http://127.0.0.1:9090) in service, enter the starting point, end point, and collection interval of the collection period to import all the metric data provided by Prometheus.
 
 **prometheus_preprocessing.py**: Collecting service metrics at the same time zone. Due to the nature of k8s, there are cases where the timestamp of metric data generated at the same time during the gathering process occurs in duplicate. Provides a collection of data that occurs within the same time; it is based on statistical techniques of sum, mean, and median.
 
-**pod_separate.py**: Differences the data collected by service; proceeds with converting from metric-centered data to service-centered data.
+**pod_separate.py**: Separate the data collected by service; proceeds with converting from metric-centered data to service-centered data.
 
 ------------
 ### Requirements
