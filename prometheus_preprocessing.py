@@ -22,7 +22,7 @@ def preprocessing_each_pod(dir:str, chunk_size:str,method:str):
     count=0
     
     # integration all metric csv files for preprocessing
-    for file in tqdm(file_list, uint=" variable", desc=" preprocessing"):
+    for file in tqdm(file_list, unit=" variable", desc=" preprocessing"):
         if file.split('.')[-1] == 'csv':
             if count==0:
                 core_csv = pd.read_csv(dir + file)

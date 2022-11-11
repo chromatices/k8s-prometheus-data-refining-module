@@ -22,14 +22,14 @@ def main(url:str, start_time:str, end_time:str, chunk_size:str, storage_path:str
     chunk_size = parse_timedelta(end_time, chunk_size)
     storage_path = storage_path
 
-    custom_dir(storage_path)
-    f =  open(storage_path +"/error_variable.txt",'w')
+    # custom_dir(storage_path)
+    # f =  open(storage_path +"/error_variable.txt",'w')
 
     # import avaliable metric's name
     variable_name = prom.all_metrics()
 
     # call data from prometheus
-    for name in tqdm(variable_name,uint=" variable", desc=" scrpaing"):
+    for name in tqdm(variable_name,unit=" variable", desc=" scrpaing"):
         try:
             metric_data = prom.get_metric_range_data(
                 metric_name=name,
@@ -43,9 +43,9 @@ def main(url:str, start_time:str, end_time:str, chunk_size:str, storage_path:str
 
         except PrometheusApiClientException:
             print(name+" has too many samples so that occur PrometheusApiClientException. Check the "+storage_path+"/error_variable.txt.")
-            f.write(name)
+            # f.write(name)
             pass
-    f.close()
+    # f.close()
     
 if __name__ == "__main__":
     url = args.url

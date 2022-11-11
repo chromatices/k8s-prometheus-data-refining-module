@@ -14,7 +14,7 @@ def pod_separate(csv_file:str, dir:str, save_dir:str):
     custom_dir(save_dir)
     core_csv = pd.read_csv(dir+csv_file)
     pod_list = core_csv['pod'].unique()
-    for pod in tqdm(pod_list, uint=" pod", desc=" integrating" ):
+    for pod in tqdm(pod_list, unit=" pod", desc=" integrating" ):
         tmp = core_csv[core_csv['pod']==pod]
         tmp = tmp.sort_values(by=['timestamp'],axis=0).reset_index(drop=True)
         tmp = tmp.drop(['pod'],axis=1)
