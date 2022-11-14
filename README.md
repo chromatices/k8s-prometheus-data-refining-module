@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-# k8s-prometheus-data-scraper
-prometheus raw data scraper on k8s env
-=======
-# k8s-prometheus-data-scraper
-- prometheus raw data scraper on k8s env
+# k8s-prometheus-data-scraper    
+- prometheus raw data scraper on k8s env    
 
 This repository is a module for prometheus data scraping and preprocessing in k8s environments; the configuration consists of three files, each of which is summarized as follows:
 
@@ -34,4 +30,5 @@ python3 pod_separate.py --filename [prometheus_preprocessing.py 's output] --tar
 ```
 ------------------
 - This work was supported by Institute for Information & communications Technology Promotion(IITP) grant funded by the Korea government(MSIT) (No.2021-0-00281, Development of highly integrated operator resource deployment optimization technology to maximize performance efficiency of high-load complex machine learning workloads in a hybrid cloud environment)
->>>>>>> aa9fb28b66f0adeadda5fcc24ea04af177947340
+
+<!-- >>>>>>> aa9fb28b66f0adeadda5fcc24ea04af177947340 -->
