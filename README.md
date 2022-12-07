@@ -15,7 +15,7 @@ This repository is a module for prometheus data scraping and preprocessing in k8
 tqdm == 4.64.0
 numpy == 1.21.5
 pandas == 1.4.2
-prometheus-api-client == 0.5.0
+prometheus-api-client == 0.5.2
 ```
 
 -----------------
