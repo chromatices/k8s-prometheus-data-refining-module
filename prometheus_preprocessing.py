@@ -3,6 +3,7 @@ import argparse
 import pandas as pd
 from tqdm import tqdm
 from utils.custom_dir import custom_dir
+from nostril import generate_nonsense_detector
 
 parser = argparse.ArgumentParser(description='Process to set parameters.')
 parser.add_argument('--storage_path', type=str,default='./prometheus_cpu_memory/')
@@ -47,6 +48,17 @@ def preprocessing_each_pod(dir:str, chunk_size:str,method:str):
     # remove metric that has no pod name
     core_csv = core_csv[core_csv['pod']!=0] 
     
+    # pod name integration
+    core_df['label'] = core_df['pod'].apply(lambda x: 1 if x.split('-')[-1].isalpha() == False else 0)
+    num_df = core_df[core_df['label']==1]
+    alpha_df = core_df[core_df['label']==0]
+
+    nonsense_detector = generate_nonsense_detector(min_length=4, min_score=4.2)
+    num_df['pod'] = num_df.apply(lambda x: x['pod'].replace('-' + x['pod'].split('-')[-1],''), axis=1)        
+    alpha_df['pod'] = alpha_df.apply(lambda x: x['pod'].replace('-' + x['pod'].split('-')[-1],'') if nonsense_detector(x['pod'].split('-')[-1]) else x['pod'], axis=1)    
+    
+    core_df = pd.concat([num_df,alpha_df],axis=0)
+
     # integration value at same time
     core_csv_groupby = core_csv.groupby(['timestamp','pod'])
     if method == 'sum':
