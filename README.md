@@ -15,18 +15,18 @@ This repository is a module for prometheus data scraping and preprocessing in k8
 tqdm == 4.64.0
 numpy == 1.21.5
 pandas == 1.4.2
-prometheus-api-client == 0.5.0
+prometheus-api-client == 0.5.2
 ```
 
 -----------------
 
 ### How to use
 ```
-python3 prometheus_scrapper.py --url http://127.0.0.1:9090 --start_time 10d --end_time now --chunk_size [1s, 1t, 1h, 1d, 1m, 1y] --storage path [save dir]
+python prometheus_scrapper.py --url http://127.0.0.1:9090 --start_time 10d --end_time now --chunk_size [1s, 1t, 1h, 1d, 1m, 1y] --storage path [save dir]
 
-python3 prometheus_preprocessing.py --storage_path [save_dir] --chunk_size [1s, 1t, 1h, 1d, 1m, 1y] --method [sum,mean,median]
+python prometheus_preprocessing.py --storage_path [save_dir] --chunk_size [1s, 1t, 1h, 1d, 1m, 1y] --method [sum,mean,median]
 
-python3 pod_separate.py --filename [prometheus_preprocessing.py 's output] --target_dir [prometheus_preprocessing.py 's output dir] --save_dir [final output dir]
+python pod_separate.py --filename [prometheus_preprocessing.py 's output] --target_dir [prometheus_preprocessing.py 's output dir] --save_dir [final output dir]
 ```
 ------------------
 - This work was supported by Institute for Information & communications Technology Promotion(IITP) grant funded by the Korea government(MSIT) (No.2021-0-00281, Development of highly integrated operator resource deployment optimization technology to maximize performance efficiency of high-load complex machine learning workloads in a hybrid cloud environment)
